@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Connection Status</title>
+    <style>
+        body{
+          margin-top: 300px;  
+        }
+        div {
+            justify-content: center;
+            height: 150px;
+            width: 450px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            background-size: 80px;
+            background-color: rgb(255, 255, 255);
+            border-radius: 20px;
+            color: rgb(29, 43, 231);
+            font-size: 150%;
+            font-style: italic;
+            margin-left: 500px;
+           
+        }
+        div .status {
+            
+            width: 67px;
+            height: 70px;
+            background-repeat: no-repeat;
+            margin-right: 10px;
+            padding-right: 12px;
+            padding-bottom: 10px;
+          
+            background-image:url(images/wifi\ not.webp);
+            border-radius: 50%; /* Corrected from border: 50%; */
+            margin-left: 10px; /* Added margin for better spacing */
+        }
+        div .status.online {
+            height: 80px;
+            width: 100px;
+            background-repeat: no-repeat;
+            background-size:50px;
+            background-position: center;
+            background-image: url(images/wifi1.png);
+            
+        }
+        div .on{
+    background-color: #4af77e;
+    color: #e6242e;
+    padding: 10px;
+    border-radius: 30px;
+    margin-bottom: 180px;
+    font-size: 90%;
+    margin-left: 80px;
+    margin-right: -90px;
+  }
+    </style>
+</head>
+<body>
+    <div>Connecting to Internet:- <div class="status"></div></div>
+    <div class="">
+        <h2 class="on"></h2>
+        <p class="on1"></p>
+    </div>
+    <script>
+        const checkOnlineStatus = () => {
+            const statusBar = document.querySelector('.status');
+            const content = document.querySelector('.on');
+    const content1 = document.querySelector('.on1');
+
+            if (navigator.onLine) {
+                if (!statusBar.classList.contains('online')) {
+                    statusBar.classList.add('online');
+                    content.innerHTML = "Connected, Secured  ";
+                    
+
+                  
+                }
+                
+            } else {
+                if (statusBar.classList.contains('online')) {
+                    statusBar.classList.remove('online');
+                    content.innerHTML = "Your are not connected ";
+                    content1.innerHTML = "";
+                }
+            }
+            setTimeout(checkOnlineStatus, 5000);
+        }
+        checkOnlineStatus();
+    </script>
+</body>
+</html> 
